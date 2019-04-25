@@ -4,6 +4,7 @@ using System.Net.Http;
 
 using Newtonsoft.Json;
 using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace IggieNotifications
 {
@@ -17,16 +18,23 @@ namespace IggieNotifications
             var configuration = builder.Build();
 
             var apiKey = configuration["api-key"];
+            var devMode = configuration["devMode"] == "true";
 
             using (HttpClient client = new HttpClient()) {
                 // Call asynchronous network methods in a try/catch block to handle exceptions
                 try {
-                    HttpResponseMessage response = await client.GetAsync($"https://api.willyweather.com.au/v2/{apiKey}/locations/8190/weather.json?forecasts=temperature&days=2&startDate=2019-04-25");
-                    response.EnsureSuccessStatusCode();
-                    string responseBody = await response.Content.ReadAsStringAsync();
+                    string responseBody = null;
+
+                    if (devMode) {
+                        responseBody = await File.ReadAllTextAsync("TestData/temperatureTestData.json");
+                    } else {
+                        HttpResponseMessage response = await client.GetAsync($"https://api.willyweather.com.au/v2/{apiKey}/locations/8190/weather.json?forecasts=temperature&days=2&startDate=2019-04-25");
+                        response.EnsureSuccessStatusCode();
+                        responseBody = await response.Content.ReadAsStringAsync();
+                    }
 
                     var forcastResponse = JsonConvert.DeserializeObject<WillyWeatherForecastTempResponse>(responseBody);
-
+                    
                     foreach (var day in forcastResponse.Forecasts.Temperature.Days) {
                         foreach (var entry in day.Entries) {
                             var entryDateTime = entry.DateTime.ToString("f");
