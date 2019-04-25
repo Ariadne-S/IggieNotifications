@@ -24,14 +24,12 @@ namespace IggieNotifications
                 .AddJsonFile("appSecrets.json", optional: true);
             var configuration = builder.Build();
 
-            
-
             try {
                 Log.Information("Starting app");
                 await RunAsync(Log.Logger, configuration);
                 return 0;
             } catch (Exception ex) {
-                Log.Fatal(ex, "Host terminated unexpectedly");
+                Log.Fatal(ex, "Top level exception, application will now exit");
                 return 1;
             } finally {
                 Log.Information("Application is about to close naturally");
