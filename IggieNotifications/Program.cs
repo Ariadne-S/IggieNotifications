@@ -40,7 +40,7 @@ namespace IggieNotifications
 
         private static async Task RunAsync(ILogger logger, IConfigurationRoot configuration)
         {
-            await ApiFunctions.GetForecastData(logger, configuration);
+            await WeatherForecastProcessor.GetForecastData(logger, configuration);
         }
     }
 }

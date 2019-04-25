@@ -1,0 +1,229 @@
+﻿{
+    "location": {
+        "id": 8190,
+        "name": "Redbank Plains",
+        "region": "Brisbane",
+        "state": "QLD",
+        "postcode": "4301",
+        "timeZone": "Australia/Brisbane",
+        "lat": -27.64662,
+        "lng": 152.87162,
+        "typeId": 21
+    },
+    "forecasts": {
+        "temperature": {
+            "days": [
+                {
+                    "dateTime": "2019-04-28 00:00:00",
+                    "entries": [
+                        {
+                            "dateTime": "2019-04-28 00:00:00",
+                            "temperature": 17.6
+                        },
+                        {
+                            "dateTime": "2019-04-28 01:00:00",
+                            "temperature": 16.3
+                        },
+                        {
+                            "dateTime": "2019-04-28 02:00:00",
+                            "temperature": 16.2
+                        },
+                        {
+                            "dateTime": "2019-04-28 03:00:00",
+                            "temperature": 15.7
+                        },
+                        {
+                            "dateTime": "2019-04-28 04:00:00",
+                            "temperature": 15
+                        },
+                        {
+                            "dateTime": "2019-04-28 05:00:00",
+                            "temperature": 14.3
+                        },
+                        {
+                            "dateTime": "2019-04-28 06:00:00",
+                            "temperature": 14
+                        },
+                        {
+                            "dateTime": "2019-04-28 07:00:00",
+                            "temperature": 15.1
+                        },
+                        {
+                            "dateTime": "2019-04-28 08:00:00",
+                            "temperature": 17.9
+                        },
+                        {
+                            "dateTime": "2019-04-28 09:00:00",
+                            "temperature": 21.5
+                        },
+                        {
+                            "dateTime": "2019-04-28 10:00:00",
+                            "temperature": 24.7
+                        },
+                        {
+                            "dateTime": "2019-04-28 11:00:00",
+                            "temperature": 26.5
+                        },
+                        {
+                            "dateTime": "2019-04-28 12:00:00",
+                            "temperature": 27.2
+                        },
+                        {
+                            "dateTime": "2019-04-28 13:00:00",
+                            "temperature": 27.3
+                        },
+                        {
+                            "dateTime": "2019-04-28 14:00:00",
+                            "temperature": 27.2
+                        },
+                        {
+                            "dateTime": "2019-04-28 15:00:00",
+                            "temperature": 26.8
+                        },
+                        {
+                            "dateTime": "2019-04-28 16:00:00",
+                            "temperature": 25.7
+                        },
+                        {
+                            "dateTime": "2019-04-28 17:00:00",
+                            "temperature": 24.1
+                        },
+                        {
+                            "dateTime": "2019-04-28 18:00:00",
+                            "temperature": 22.2
+                        },
+                        {
+                            "dateTime": "2019-04-28 19:00:00",
+                            "temperature": 20.2
+                        },
+                        {
+                            "dateTime": "2019-04-28 20:00:00",
+                            "temperature": 18.7
+                        },
+                        {
+                            "dateTime": "2019-04-28 21:00:00",
+                            "temperature": 17.6
+                        },
+                        {
+                            "dateTime": "2019-04-28 22:00:00",
+                            "temperature": 16.9
+                        },
+                        {
+                            "dateTime": "2019-04-28 23:00:00",
+                            "temperature": 16.3
+                        }
+                    ]
+                },
+                {
+                    "dateTime": "2019-04-29 00:00:00",
+                    "entries": [
+                        {
+                            "dateTime": "2019-04-29 00:00:00",
+                            "temperature": 15.8
+                        },
+                        {
+                            "dateTime": "2019-04-29 01:00:00",
+                            "temperature": 15.3
+                        },
+                        {
+                            "dateTime": "2019-04-29 02:00:00",
+                            "temperature": 14.7
+                        },
+                        {
+                            "dateTime": "2019-04-29 03:00:00",
+                            "temperature": 14
+                        },
+                        {
+                            "dateTime": "2019-04-29 04:00:00",
+                            "temperature": 13.4
+                        },
+                        {
+                            "dateTime": "2019-04-29 05:00:00",
+                            "temperature": 12.9
+                        },
+                        {
+                            "dateTime": "2019-04-29 06:00:00",
+                            "temperature": 12.9
+                        },
+                        {
+                            "dateTime": "2019-04-29 07:00:00",
+                            "temperature": 14.4
+                        },
+                        {
+                            "dateTime": "2019-04-29 08:00:00",
+                            "temperature": 17.5
+                        },
+                        {
+                            "dateTime": "2019-04-29 09:00:00",
+                            "temperature": 21.3
+                        },
+                        {
+                            "dateTime": "2019-04-29 10:00:00",
+                            "temperature": 24.6
+                        },
+                        {
+                            "dateTime": "2019-04-29 11:00:00",
+                            "temperature": 26.5
+                        },
+                        {
+                            "dateTime": "2019-04-29 12:00:00",
+                            "temperature": 27
+                        },
+                        {
+                            "dateTime": "2019-04-29 13:00:00",
+                            "temperature": 26.6
+                        },
+                        {
+                            "dateTime": "2019-04-29 14:00:00",
+                            "temperature": 25.7
+                        },
+                        {
+                            "dateTime": "2019-04-29 15:00:00",
+                            "temperature": 24.7
+                        },
+                        {
+                            "dateTime": "2019-04-29 16:00:00",
+                            "temperature": 23.3
+                        },
+                        {
+                            "dateTime": "2019-04-29 17:00:00",
+                            "temperature": 22
+                        },
+                        {
+                            "dateTime": "2019-04-29 18:00:00",
+                            "temperature": 20.6
+                        },
+                        {
+                            "dateTime": "2019-04-29 19:00:00",
+                            "temperature": 19.4
+                        },
+                        {
+                            "dateTime": "2019-04-29 20:00:00",
+                            "temperature": 18.4
+                        },
+                        {
+                            "dateTime": "2019-04-29 21:00:00",
+                            "temperature": 17.4
+                        },
+                        {
+                            "dateTime": "2019-04-29 22:00:00",
+                            "temperature": 16.6
+                        },
+                        {
+                            "dateTime": "2019-04-29 23:00:00",
+                            "temperature": 16
+                        }
+                    ]
+                }
+            ],
+            "units": {
+                "temperature": "c"
+            },
+            "issueDateTime": "2019-04-25 17:19:55",
+            "carousel": {
+                "size": 10,
+                "start": 5
+            }
+        }
+    }
+}
