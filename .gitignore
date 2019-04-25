@@ -66,6 +66,7 @@ _ReSharper*/
 #[Bb]uild/
 *.api-key.txt
 .artifacts/
+appSecrets.json
 
 #Subversion files
 .svn
