@@ -40,8 +40,18 @@ namespace IggieNotifications
 
         private static async Task RunAsync(ILogger logger, IConfigurationRoot configuration)
         {
+            UserSpecifications userSpecifications = null;
+
+            if (Json.FileExists<UserSpecifications>()) {
+                userSpecifications = Json.ReadJson<UserSpecifications>();
+            } else {
+                userSpecifications = new UserSpecifications();
+                userSpecifications.GetUserSpecifications(logger);
+                Json.WriteJson(userSpecifications);
+            }
+
+            // Do something with {userSpecifications}
             await WeatherForecastProcessor.GetForecastData(logger, configuration);
-            UserSpecifications userSpecifications = new UserSpecifications(logger);
 
         }
     }

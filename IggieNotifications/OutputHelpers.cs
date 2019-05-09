@@ -7,29 +7,29 @@ namespace IggieNotifications
 {
     public static class OutputHelpers
     {
-        public static string addCommasandAnd(List<string> List)
+        public static string JoinWords(List<string> words)
         {
-            var outputString = "";
-            /*
-            var listLength = List.Count;
-            var loop = 1;
-            var lastItem = List[-1];
-            List<string> listWithoutItem = List.RemoveAt(listLength -1);
+            var builder = new StringBuilder();
+            var onlyOneWord = words.Count == 1;
+            var lastWordIndex = words.Count - 1;
+            var secondLastWordIndex = lastWordIndex - 1;
 
+            var index = 0;
+            foreach (string word in words) {
 
-            StringBuilder builder = new StringBuilder();
-            foreach (string element in List) {
-                if (loop <= listLength) {
-                    builder.Append(element).Append(", ");
+                if (index != lastWordIndex) {
+                    builder.Append(word);
+                    if (!onlyOneWord && index != secondLastWordIndex) {
+                        builder.Append(", ");
+                    }
+                } else {
+                    builder.Append(" and ").Append(word);
                 }
-                else builder.Append("and ").Append(element);
+
+                index++;
             }
 
-            string result = builder.ToString();
-            Console.WriteLine(result);
-
-            */
-            return outputString;
+            return builder.ToString();
         }
         public static string CasedString(string input)
         {

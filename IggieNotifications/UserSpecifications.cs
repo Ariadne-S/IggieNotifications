@@ -9,12 +9,18 @@ namespace IggieNotifications
     class UserSpecifications
     {
 
-        public UserSpecifications(ILogger Log)
+        public UserSpecifications()
+        {
+            IggieNames = new List<string>();
+        }
+
+        public void GetUserSpecifications(ILogger Log)
         {
             Console.WriteLine("Welcome to the User Specifications");
             NumOfIggies(Log);
             SetNamingConvention(Log);
             SetJumperThreshold(Log);
+            SetHeatWarningThreshold(Log);
         }
 
         public int NumOfIggies(ILogger Log)
@@ -27,7 +33,7 @@ namespace IggieNotifications
 
         public string SetNamingConvention(ILogger Log)
         {
-            if (NumberOfIggies >= 3) {
+            if (NumberOfIggies >= 4) {
                 NamingConvention = "your italian greyhounds";
                 Log.Information("Naming Convention has been set to '{0}'", NamingConvention);
                 return NamingConvention;
@@ -35,7 +41,6 @@ namespace IggieNotifications
             else {
                 var dogNum = 1;
                 var nameableIggie = Enumerable.Range(1, NumberOfIggies);
-                IggieNames = new List<string>();
                 foreach (int iggie in nameableIggie) {
                     var requestMessage = "What is your iggie's name?";
                     Console.WriteLine("[{0}] {1}", dogNum, requestMessage);
@@ -46,28 +51,35 @@ namespace IggieNotifications
                     Log.Information("{0} added to iggieNames list", input);
                     dogNum++;
                 }
-                if (IggieNames.Count == 2) {
-                    NamingConvention = string.Join<string>(" and ", IggieNames);
+                if (IggieNames.Count < 4) {
+                    NamingConvention = OutputHelpers.JoinWords(IggieNames);
                     Log.Information("Naming Convention has been set to '{0}'", NamingConvention);
                 }
                 return NamingConvention;
             }
-
         }
 
-        public int SetJumperThreshold(ILogger Log)
+        public decimal SetJumperThreshold(ILogger Log)
         {
-            var requestMessage = "At what nightly temperature would you like to recieve suggestions to put a jumper on your italian greyhounds?";
-            JumperThreshold = UserInputRequests.UserIntInput(requestMessage, Log);
+            var requestMessage = "At what min nightly temperature would you like to recieve suggestions to put a jumper on your italian greyhounds?";
+            JumperThreshold = UserInputRequests.UserDecInput(requestMessage, Log);
             return JumperThreshold;
         }
 
-        
+
+        public decimal SetHeatWarningThreshold(ILogger Log)
+        {
+            var requestMessage = "At what daily high temperature would you like to recieve heat warnings?";
+            HeatWarningThreshold = UserInputRequests.UserDecInput(requestMessage, Log);
+            return HeatWarningThreshold;
+        }
+
         public int NumberOfIggies { get; set; }
         public List<string> IggieNames { get; set; }
         public string NamingConvention { get; set; }
-        public int JumperThreshold { get; set; }
+        public decimal JumperThreshold { get; set; }
         public decimal HeatWarningThreshold { get; set; }
+
 
     }
 }
