@@ -112,10 +112,7 @@ namespace IggieNotifications
                 ExpectedMinNightlyTemperature = expectedMinNightlyTemperature,
                 ExpectedMinNightlyTemperatureTime = expectedMinNightlyTemperatureTime
             };
-            foreach (var item in nightEntries) {
-                Console.WriteLine(item);
-            }
-
+       
             return nightlyTemperatureResults;
         }
 

@@ -41,6 +41,8 @@ namespace IggieNotifications
         private static async Task RunAsync(ILogger logger, IConfigurationRoot configuration)
         {
             await WeatherForecastProcessor.GetForecastData(logger, configuration);
+            UserSpecifications userSpecifications = new UserSpecifications(logger);
+
         }
     }
 }
