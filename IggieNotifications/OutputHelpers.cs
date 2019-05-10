@@ -16,8 +16,9 @@ namespace IggieNotifications
 
             var index = 0;
             foreach (string word in words) {
-
-                if (index != lastWordIndex) {
+                if (onlyOneWord) {
+                    builder.Append(word);
+                } else if (index != lastWordIndex) {
                     builder.Append(word);
                     if (!onlyOneWord && index != secondLastWordIndex) {
                         builder.Append(", ");

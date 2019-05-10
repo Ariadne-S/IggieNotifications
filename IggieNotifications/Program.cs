@@ -46,7 +46,8 @@ namespace IggieNotifications
                 userSpecifications = Json.ReadJson<UserSpecifications>();
             } else {
                 userSpecifications = new UserSpecifications();
-                userSpecifications.GetUserSpecifications(logger);
+                var userInterface = new UserInputRequests.ConsoleInput();
+                userSpecifications.GetUserSpecifications(logger, userInterface);
                 Json.WriteJson(userSpecifications);
             }
 
