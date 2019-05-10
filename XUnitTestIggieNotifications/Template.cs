@@ -7,7 +7,7 @@ using Serilog;
 using IggieNotifications;
 
 namespace XUnitTestIggieNotifications
-{
+{/*
     public class TemplateTest
     {
         private readonly ILogger _log;
@@ -33,5 +33,6 @@ namespace XUnitTestIggieNotifications
             //Assert
         }
     }
+    */
 }
         

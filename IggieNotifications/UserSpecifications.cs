@@ -6,7 +6,7 @@ using Serilog;
 
 namespace IggieNotifications
 {
-    class UserSpecifications
+    public class UserSpecifications
     {
 
         public UserSpecifications()
