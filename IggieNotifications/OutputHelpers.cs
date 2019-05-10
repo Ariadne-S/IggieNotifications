@@ -36,7 +36,18 @@ namespace IggieNotifications
         {
             return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input);
         }
+
+        public static string CapitaliseFirstLetter(string input)
+        {
+            if (string.IsNullOrEmpty(input)) {
+                return string.Empty;
+            }
+            char[] a = input.ToCharArray();
+            a[0] = char.ToUpper(a[0]);
+            return new string(a);
+        }
+
     }
 
-   
 }
+

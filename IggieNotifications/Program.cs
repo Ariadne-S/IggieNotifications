@@ -52,8 +52,13 @@ namespace IggieNotifications
             }
 
             // Do something with {userSpecifications}
-            await WeatherForecastProcessor.GetForecastData(logger, configuration);
+            var data = await WeatherForecastProcessor.GetForecastData(logger, configuration);
+            JumperNotification jumperNotification = null;
 
+            // get the data
+            jumperNotification = new JumperNotification(userSpecifications, logger, data);
+            var jumperNotificationMessage = jumperNotification.SetJumperIsNeeded();
+            Console.WriteLine(jumperNotificationMessage);
         }
     }
 }

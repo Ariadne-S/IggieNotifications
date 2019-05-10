@@ -63,7 +63,7 @@ namespace IggieNotifications
 
     public class WeatherForecastProcessor
     {
-        internal static async Task GetForecastData(ILogger log, IConfigurationRoot configuration)
+        public static async Task<NightlyTemperature> GetForecastData(ILogger log, IConfigurationRoot configuration)
         {
             var apiKey = configuration["api-key"];
             var devMode = string.Equals(configuration["devMode"], "true", StringComparison.InvariantCultureIgnoreCase);
@@ -80,12 +80,13 @@ namespace IggieNotifications
                 api = new HttpWeatherApi(log, apiKey);
             }
 
-            NightlyTemperature nightlyTemperatureResults = await GetForcastData(log, apiLocationId, now, api);
+            NightlyTemperature nightlyTemperatureResults = await GetForecastData(log, apiLocationId, now, api);
 
-            Console.WriteLine("The expected minimum temperature will be {0} at {1}", nightlyTemperatureResults.ExpectedMinNightlyTemperature, nightlyTemperatureResults.ExpectedMinNightlyTemperatureTime.ToString("h:mm tt"));
+            var nightlyTemperatureResultsMessage = $"The expected minimum temperature will be {nightlyTemperatureResults.ExpectedMinNightlyTemperature} at {nightlyTemperatureResults.ExpectedMinNightlyTemperatureTime.ToString("h:mm tt")}";
+            return nightlyTemperatureResults;
         }
 
-        public static async Task<NightlyTemperature> GetForcastData(ILogger log, int apiLocationId, DateTime now, IWeatherApi api)
+        public static async Task<NightlyTemperature> GetForecastData(ILogger log, int apiLocationId, DateTime now, IWeatherApi api)
         {
             var forecastTempResponse = await GetForecastTemperatureData(log, api, now, apiLocationId);
             var nightlyTemperatureResults = ProcessResults(forecastTempResponse);
