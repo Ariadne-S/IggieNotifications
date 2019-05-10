@@ -23,12 +23,12 @@ namespace IggieNotifications
         {
             var localNamingConvention = OutputHelpers.CapitaliseFirstLetter(_localuserSpecification.NamingConvention);
             if (_localuserSpecification.JumperThreshold >= _data.ExpectedMinNightlyTemperature) {
-                var message = $"{localNamingConvention} will need a jumper tonight\nThe temperature will be {_data.ExpectedMinNightlyTemperature} at {_data.ExpectedMinNightlyTemperatureTime}";
+                var message = $"{localNamingConvention} will need a jumper tonight\nThe temperature will be {_data.ExpectedMinNightlyTemperature}°c at {_data.ExpectedMinNightlyTemperatureTime.ToString("h tt")}";
 
                 JumperIsNeeded = true;
                 return (message);
             } else {
-                var message = $"{localNamingConvention} will not need a jumper tonight\nThe temperature will be {_data.ExpectedMinNightlyTemperature} at {_data.ExpectedMinNightlyTemperatureTime}";
+                var message = $"{localNamingConvention} will not need a jumper tonight\nThe temperature will be {_data.ExpectedMinNightlyTemperature}°c at {_data.ExpectedMinNightlyTemperatureTime.ToString("h tt")}";
 
                 JumperIsNeeded = false;
                 return (message);
