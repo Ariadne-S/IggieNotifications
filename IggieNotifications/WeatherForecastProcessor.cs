@@ -63,7 +63,7 @@ namespace IggieNotifications
 
     public class WeatherForecastProcessor
     {
-        public static async Task<NightlyTemperature> GetForecastData(ILogger log, IConfigurationRoot configuration)
+        public static async Task<NightlyTemperature> RetrieveWeatherData(ILogger log, IConfigurationRoot configuration)
         {
             var apiKey = configuration["api-key"];
             var devMode = string.Equals(configuration["devMode"], "true", StringComparison.InvariantCultureIgnoreCase);
@@ -71,34 +71,38 @@ namespace IggieNotifications
 
             var apiLocationId = 8190;
             var now = DateTime.Now;
-
+            var dateForFileName = now.ToString("yyyy-MM-dd");
+            var fileName = $"C:/Projects/C_Sharp/IggieNotifications/IggieNotifications/WeatherData/temperatureData{dateForFileName}.json";
             IWeatherApi api = null;
 
             if (devMode) {
                 api = new FileWeatherApi(log, "TestData/temperatureTestData.json");
-            } else {
+            } else if (Json.FileExists<string>(fileName)) {
+                api = new FileWeatherApi(log, fileName);
+            }
+            else {
                 api = new HttpWeatherApi(log, apiKey);
             }
 
-            NightlyTemperature nightlyTemperatureResults = await GetForecastData(log, apiLocationId, now, api);
+            NightlyTemperature nightlyTemperatureResults = await GetNightlyTemperatureResults(log, apiLocationId, now, api, fileName);
 
-            var nightlyTemperatureResultsMessage = $"The expected minimum temperature will be {nightlyTemperatureResults.ExpectedMinNightlyTemperature} at {nightlyTemperatureResults.ExpectedMinNightlyTemperatureTime.ToString("h:mm tt")}";
             return nightlyTemperatureResults;
         }
 
-        public static async Task<NightlyTemperature> GetForecastData(ILogger log, int apiLocationId, DateTime now, IWeatherApi api)
+        public static async Task<NightlyTemperature> GetNightlyTemperatureResults(ILogger log, int apiLocationId, DateTime now, IWeatherApi api, string fileName)
         {
-            var forecastTempResponse = await GetForecastTemperatureData(log, api, now, apiLocationId);
+            var forecastTempResponse = await GetForecastTemperatureData(log, api, now, apiLocationId, fileName);
             var nightlyTemperatureResults = ProcessResults(forecastTempResponse);
             return nightlyTemperatureResults;
         }
 
-        private static async Task<WillyWeatherForecastTempResponse> GetForecastTemperatureData(ILogger log, IWeatherApi api, DateTime currentDateforApi, int apiLocationId)
+        private static async Task<WillyWeatherForecastTempResponse> GetForecastTemperatureData(ILogger log, IWeatherApi api, DateTime currentDateforApi, int apiLocationId, string fileName)
         {
             var responseBody = await api.GetForcastTemperatureData(currentDateforApi, apiLocationId);
             var forcastResponse = JsonConvert.DeserializeObject<WillyWeatherForecastTempResponse>(responseBody);
-            log.Information("Forecast has been successefully Deserialised");
-
+            log.Information("Forecast has been successfully Deserialised");
+            Json.WriteJson(forcastResponse, fileName);
+            log.Information("Forecast has been successfully saved to {0}", fileName);
             return forcastResponse;
         }
 

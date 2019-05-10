@@ -43,16 +43,20 @@ namespace IggieNotifications
             UserSpecifications userSpecifications = null;
 
             if (Json.FileExists<UserSpecifications>()) {
+                logger.Information("Prior userSpecification found");
                 userSpecifications = Json.ReadJson<UserSpecifications>();
             } else {
+                logger.Information("No prior userSpecification found");
                 userSpecifications = new UserSpecifications();
                 var userInterface = new UserInputRequests.ConsoleInput();
                 userSpecifications.GetUserSpecifications(logger, userInterface);
-                Json.WriteJson(userSpecifications);
+                Json.WriteJson<UserSpecifications>(userSpecifications);
+                logger.Information("userSpecification saved");
             }
 
             // Do something with {userSpecifications}
-            var data = await WeatherForecastProcessor.GetForecastData(logger, configuration);
+            var data = await WeatherForecastProcessor.RetrieveWeatherData(logger, configuration);
+            logger.Information("The Weather Forecast Processor has retrieved Weather Data");
             JumperNotification jumperNotification = null;
 
             // get the data

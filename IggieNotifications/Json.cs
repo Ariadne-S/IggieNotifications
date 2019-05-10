@@ -14,6 +14,12 @@ namespace IggieNotifications
                 $@"C:\Projects\C_Sharp\IggieNotifications\{nameof(T)}.json", json);
         }
 
+        public static void WriteJson<T>(T data, string fileName)
+        {
+            var json = JsonConvert.SerializeObject(data);
+            System.IO.File.WriteAllText(fileName, json);
+        }
+
         public static T ReadJson<T>()
         {
             var jsonFile = System.IO.File.ReadAllText(
@@ -24,6 +30,11 @@ namespace IggieNotifications
         public static bool FileExists<T>()
         {
             return System.IO.File.Exists($@"C:\Projects\C_Sharp\IggieNotifications\{nameof(T)}.json");
+        }
+
+        public static bool FileExists<T>(string fileName)
+        {
+            return System.IO.File.Exists(fileName);
         }
 
     }
